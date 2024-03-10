@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/theme-toggle";
+import { Header } from "@/components/layout/header";
+import { ThemeProvider } from "@/components/layout/theme-provider";
+import { ModeToggle } from "@/components/ui/theme-toggle";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -18,15 +19,21 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={`h-screen  ${inter.className}`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					<ModeToggle />
-					{children}
+					<Header />
+					<section className="mx-auto max-w-screen-xl p-3">{children}</section>
+					<footer className="text-center text-sm text-primary">
+						<p>© 2024</p>
+						<header className="sticky top-0 z-[1] mx-auto flex w-full max-w-screen-xl flex-wrap items-center justify-end p-3 font-sans font-bold uppercase text-primary ">
+							<ModeToggle />
+						</header>
+					</footer>
 				</ThemeProvider>
 			</body>
 		</html>

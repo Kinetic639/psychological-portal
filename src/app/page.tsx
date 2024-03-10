@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
 	return (
 		<main>
-			<div>Początek portalu Ani</div>
+			<h1 className="text-3rem">Jakiś kurwa cytat</h1>
 			<div>
 				<Button>Test</Button>
 			</div>
