@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`h-screen  ${inter.className}`}>
+			<body className={`h-screen  ${inter.className} `}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
@@ -27,12 +27,30 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<Header />
-					<section className="mx-auto max-w-screen-xl p-3">{children}</section>
-					<footer className="text-center text-sm text-primary">
-						<p>© 2024</p>
-						<header className="sticky top-0 z-[1] mx-auto flex w-full max-w-screen-xl flex-wrap items-center justify-end p-3 font-sans font-bold uppercase text-primary ">
+					<section className="mx-auto h-full max-w-6xl p-3">{children}</section>
+					<footer className="mx-auto max-w-6xl pb-6 text-center text-sm text-primary">
+						<div className="flex w-full items-center justify-between gap-4 p-3 text-left text-primary">
+							<div className="mx-auto flex flex-wrap gap-8  p-3 text-left text-primary">
+								<ul>
+									<li>Terapia</li>
+									<li>Cennik</li>
+									<li>Umów wizytę</li>
+								</ul>
+								<ul>
+									<li>Materiały</li>
+									<li>Cennik</li>
+									<li>Umów wizytę</li>
+								</ul>
+								<ul>
+									<li>Materiały</li>
+									<li>Cennik</li>
+									<li>Umów wizytę</li>
+								</ul>
+							</div>
+							<div className="flex-1"></div>
 							<ModeToggle />
-						</header>
+						</div>
+						<p>© Anna Kłobuchowska 2024</p>
 					</footer>
 				</ThemeProvider>
 			</body>
