@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`h-screen  ${inter.className} `}>
+			<body className={` ${inter.className} `}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
@@ -27,8 +27,8 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<Header />
-					<section className="mx-auto h-full max-w-6xl p-3">{children}</section>
-					<footer className="mx-auto max-w-6xl pb-6 text-center text-sm text-primary">
+					<section className="flex flex-col">{children}</section>
+					<footer className="mx-auto px-10 pb-6 text-center text-sm text-primary">
 						<div className="flex w-full items-center justify-between gap-4 p-3 text-left text-primary">
 							<div className="mx-auto flex flex-wrap gap-8  p-3 text-left text-primary">
 								<ul>
