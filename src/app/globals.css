@@ -27,7 +27,9 @@
 
 		/*tła hover*/
 		--accent: hsl(114.4,19.3%,56.3%);
-		--accent-light: hsl(116, 19%, 85%);
+		--accent-dark: hsl(112, 18%, 47%);
+		--accent-light: hsl(114, 20%, 69%);
+		--accent-lightest: hsl(116, 19%, 85%);
 
 		--accent-foreground: hsl(222.2 47.4% 11.2%);
 
@@ -70,7 +72,7 @@
 		--muted: hsl(217.2 32.6% 17.5%);
 		--muted-foreground: hsl(215 20.2% 65.1%);
 
-		--accent: hsl(217.2 32.6% 17.5%);
+		--accent: hsl(114.4,19.3%,56.3%);
 		--accent-foreground: hsl(210 40% 98%);
 
 		--destructive: hsl(0 62.8% 30.6%);
