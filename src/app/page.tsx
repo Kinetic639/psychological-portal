@@ -12,7 +12,7 @@ import {
 import { CarouselDApiDemo } from "@/components/ui/carousel-container";
 import { BackgroundWrapper } from "@/components/layout/background-wrapper";
 
-export default function Home() {
+export default async function Home() {
 	return (
 		<main className="flex flex-col gap-12">
 			<BackgroundWrapper contentStyle="relative py-4">
@@ -90,7 +90,7 @@ export default function Home() {
 				</Button>
 			</div>
 
-			<div className="mx-auto mt-[50px] flex w-full max-w-6xl  flex-col justify-center gap-6 px-4">
+			<div className="mx-auto mt-[50px] flex w-full max-w-6xl flex-col justify-center gap-6 px-4">
 				<p className=" text-3xl font-medium">Najnowsze artykuły</p>
 				<CarouselDApiDemo />
 			</div>

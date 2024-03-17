@@ -1,7 +1,9 @@
 "use client";
 
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 
+import Image from "next/image";
+import { type Article } from "@/lib/interface";
 import { Card, CardContent } from "@/components/ui/card";
 import {
 	Carousel,
@@ -9,23 +11,40 @@ import {
 	CarouselItem,
 	type CarouselApi,
 } from "@/components/ui/carousel";
+import { client, urlFor } from "@/lib/sanity";
+
+async function getLatestArticles() {
+	const query = `*[_type == 'Article'] | order(_createdAt desc) {
+    title, 
+    titleImage,
+    smallDescription,
+    "currentSlug": slug.current
+  }[0...3]`;
+	return client.fetch(query);
+}
 
 export function CarouselDApiDemo() {
-	const [api, setApi] = React.useState<CarouselApi>();
-	const [current, setCurrent] = React.useState(0);
-	const [count, setCount] = React.useState(0);
+	const [api, setApi] = useState<CarouselApi>();
+	const [current, setCurrent] = useState(0);
+	const [articles, setArticles] = useState<Article[]>([]); // State for storing articles
 
-	React.useEffect(() => {
+	useEffect(() => {
+		getLatestArticles().then(setArticles).catch(console.error);
+	}, []);
+
+	useEffect(() => {
 		if (!api) {
 			return;
 		}
+		const handleSelect = () => {
+			setCurrent(api.selectedScrollSnap());
+		};
 
-		setCount(api.scrollSnapList().length);
-		setCurrent(api.selectedScrollSnap() + 1);
+		api.on("select", handleSelect);
 
-		api.on("select", () => {
-			setCurrent(api.selectedScrollSnap() + 1);
-		});
+		return () => {
+			api.off("select", handleSelect);
+		};
 	}, [api]);
 
 	const goToSlide = (index: number) => {
@@ -33,30 +52,37 @@ export function CarouselDApiDemo() {
 	};
 
 	return (
-		<div className="flex flex-col items-center ">
-			<Carousel setApi={setApi} className="max-h-[300px] w-full">
-				<CarouselContent>
-					{Array.from({ length: 3 }).map((_, index) => (
-						<CarouselItem key={index}>
-							<Card>
-								<CardContent className="flex min-h-[300px] items-center justify-center p-6">
-									<span className="text-4xl font-semibold">Artykuł {index + 1}</span>
-								</CardContent>
-							</Card>
-						</CarouselItem>
-					))}
-				</CarouselContent>
-			</Carousel>
+		<Carousel setApi={setApi} className=" w-full">
+			<CarouselContent>
+				{articles.map((article, index) => (
+					<CarouselItem key={index}>
+						<Card>
+							<CardContent className="flex min-h-[300px] gap-4 p-6">
+								<Image
+									src={urlFor(article.titleImage).url()}
+									width={300}
+									height={300}
+									alt={article.title}
+								/>
+								<div>
+									<span className="mb-2 text-4xl font-semibold">{article.title}</span>
+									<p>{article.smallDescription}</p>
+								</div>
+							</CardContent>
+						</Card>
+					</CarouselItem>
+				))}
+			</CarouselContent>
 			<div className="flex justify-center space-x-2 py-2">
-				{Array.from({ length: count }).map((_, index) => (
+				{articles.map((_, index) => (
 					<button
 						key={index}
-						className={`h-3 w-3 rounded-full ${index === current - 1 ? "bg-primary" : "bg-gray-300"}`}
+						className={`h-3 w-3 rounded-full ${index === current ? "bg-primary" : "bg-gray-300"}`}
 						aria-label={`Go to slide ${index + 1}`}
 						onClick={() => goToSlide(index)}
 					></button>
 				))}
 			</div>
-		</div>
+		</Carousel>
 	);
 }
