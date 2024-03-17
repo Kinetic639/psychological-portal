@@ -33,7 +33,7 @@ export default function Home() {
 				</div>
 			</BackgroundWrapper>
 
-			<BackgroundWrapper containerStyle="bg-accent-light" contentStyle="py-20">
+			<BackgroundWrapper containerStyle="bg-accent-lightest" contentStyle="py-20">
 				<div className=" flex flex-col gap-12">
 					<div>
 						<p className="mb-3 text-3xl font-medium">Lorem ipsum dolor sit amet?</p>

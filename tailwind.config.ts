@@ -51,6 +51,8 @@ const config = {
 					DEFAULT: "var(--accent)",
 					foreground: "var(--accent-foreground)",
 					light: "var(--accent-light)",
+					lightest: "var(--accent-lightest)",
+					dark: "var(--accent-dark)",
 				},
 				popover: {
 					DEFAULT: "var(--popover)",
