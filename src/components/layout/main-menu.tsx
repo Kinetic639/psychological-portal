@@ -47,7 +47,7 @@ export const MainMenu = () => {
 					</Link>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<Link href="#" legacyBehavior passHref>
+					<Link href="/artykuly" legacyBehavior passHref>
 						<NavigationMenuLink
 							className={`capitalize ${navigationMenuTriggerStyle()} ${dynamicClassNames}`}
 						>
