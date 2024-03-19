@@ -63,7 +63,7 @@ export default async function Home() {
 							szacunkiem, empatią i zrozumieniem.
 						</p>
 					</div>
-					<div className="relative mx-auto  flex w-full justify-center gap-12">
+					<div className="relative z-0 mx-auto  flex w-full justify-center gap-12">
 						{cardsContent.map((card, index) => (
 							<FlipCard cardContent={card} key={index} />
 						))}
