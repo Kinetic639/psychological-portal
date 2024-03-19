@@ -20,7 +20,7 @@ export default async function NewPage() {
 
 	return (
 		<main className="flex flex-col gap-12">
-			<BackgroundWrapper containerStyle="bg-accent-light" contentStyle="py-20">
+			<BackgroundWrapper contentStyle="py-20">
 				<p>Artykuły</p>
 				{data.map((article, index) => (
 					<div key={index}>

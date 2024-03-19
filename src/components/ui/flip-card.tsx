@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Pointer } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -49,7 +48,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 	}, []);
 
 	return (
-		<div className="flip-card perspective-1000 mx-auto min-h-[400px] w-full">
+		<div className="flip-card perspective-1000  mx-auto min-h-[400px] w-full">
 			<motion.div
 				className="flip-card-inner relative h-[100%] w-full"
 				variants={variants}
@@ -72,7 +71,6 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 							<p>{cardContent.smallDescription}</p>
 						</CardContent>
 						<CardFooter className="absolute bottom-2 right-2 text-xs italic text-gray-500">
-							<Pointer className="mr-2 text-gray-400" />
 							Więcej...
 						</CardFooter>
 					</Card>
