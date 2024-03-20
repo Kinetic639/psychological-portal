@@ -3,7 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { ModeToggle } from "@/components/ui/theme-toggle";
-import { MainMenu } from "@/components/layout/main-menu";
+import { Navbar } from "@/components/layout/navbar";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -27,7 +27,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<MainMenu />
+					<Navbar />
 					<section className="flex flex-col">{children}</section>
 					<footer className="mx-auto mt-[100px] px-10 pb-6 text-center text-sm text-primary">
 						<div className="flex w-full items-center justify-between gap-4 p-3 text-left text-primary">
