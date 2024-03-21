@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import React from "react";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 import { Navbar } from "@/components/layout/navbar";
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={` ${inter.className} `}>
+			<body className={`${inter.className} relative`}>
 				<link rel="icon" href="/assets/images/brand_logo.png" sizes="any" />
 				<ThemeProvider
 					attribute="class"
@@ -29,19 +30,9 @@ export default function RootLayout({
 				>
 					<Navbar />
 					<section className="flex flex-col">{children}</section>
-					<footer className="mx-auto mt-[100px] px-10 pb-6 text-center text-sm text-primary">
-						<div className="flex w-full items-center justify-between gap-4 p-3 text-left text-primary">
+					<footer className="mx-auto mt-[100px] px-6 pb-6 text-center text-sm text-primary">
+						<div className="flex w-full items-center justify-between gap-4 text-left text-primary">
 							<div className="mx-auto flex flex-wrap gap-8  p-3 text-left text-primary">
-								<ul>
-									<li>Terapia</li>
-									<li>Cennik</li>
-									<li>Umów wizytę</li>
-								</ul>
-								<ul>
-									<li>Materiały</li>
-									<li>Cennik</li>
-									<li>Umów wizytę</li>
-								</ul>
 								<ul>
 									<li>Materiały</li>
 									<li>Cennik</li>

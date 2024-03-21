@@ -57,13 +57,14 @@
 		--input: hsl(344.4, 26.2%, 80%);
 		--ring: hsl(202.1,29.2%,25.5%);
 
-		--blob-1-top: hsl(203, 33%, 85%);
-		--blob-1-bot: hsl(202, 18%, 46%);
+		--blob-1-top: hsl(202.1,35.2%,21.2%);
+		--blob-1-center: hsl(22.5,44.4%,92.9%);
+		--blob-1-bot: hsl(137.1,15.7%,56.3%);
 
 		--blob-2-top: hsl(30, 77%, 95%);
-		--blob-2-bot: hsl(17, 53%, 83%);
+		--blob-2-bot: hsl(13, 72%, 59%);
 
-		--blob-3-top: hsl(114, 20%, 69%);
+		--blob-3-top: hsl(112, 58%, 24%);
 		--blob-3-bot: hsl(120, 32%, 85%);
 
 		--radius: 0.5rem;
