@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 import Image from "next/image";
 import { type Article } from "@/lib/interface";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
 	Carousel,
 	CarouselContent,
@@ -52,23 +52,28 @@ export function CarouselDApiDemo() {
 	};
 
 	return (
-		<Carousel setApi={setApi} className=" w-full">
+		<Carousel setApi={setApi} className="mx-auto w-full max-w-[800px]">
 			<CarouselContent>
 				{articles.map((article, index) => (
 					<CarouselItem key={index}>
-						<Card>
-							<CardContent className="flex min-h-[300px] gap-4 p-6">
-								<Image
-									src={urlFor(article.titleImage).url()}
-									width={300}
-									height={300}
-									alt={article.title}
-								/>
-								<div>
-									<span className="mb-2 text-4xl font-semibold">{article.title}</span>
-									<p>{article.smallDescription}</p>
+						<Card className="p-0">
+							<CardContent className="flex flex-1 flex-col justify-start gap-2 sm:flex-row ">
+								<div className="blob-wrapper">
+									<Image
+										src={urlFor(article.titleImage).url()}
+										width={300}
+										height={300}
+										alt={article.title}
+										layout="responsive"
+										className="mx-auto max-w-[300px] border"
+									/>
+								</div>
+								<div className="flex h-[250px]  flex-col gap-2 p-4">
+									<span className="overflow-hidden text-xl font-semibold">{article.title}</span>
+									<p className="line-clamp-4">{article.smallDescription} </p>
 								</div>
 							</CardContent>
+							<CardFooter className="flex items-center justify-end ">czytaj dalej...</CardFooter>
 						</Card>
 					</CarouselItem>
 				))}
