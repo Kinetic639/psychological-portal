@@ -3,20 +3,17 @@ import { Button } from "@/components/ui/button";
 
 const Header = () => {
 	return (
-		<div className="relative flex flex-col items-center justify-center  py-20">
-			{/*<Blob />*/}
-			<div className="z-10 flex flex-col items-center justify-center gap-2 px-6 text-center">
-				<h1 className="mb-7 text-4xl font-medium ">Kolor Sensu</h1>
-				<h2 className="pb-4 text-2xl font-medium tracking-wide text-secondary">
-					Centrum Wsparcia Psychicznego
-				</h2>
-				<h2 className="text-secondary">
-					Consequuntur dicta dignissimos fuga fugit illo magni necessitatibus quia rem sit tempore.
-				</h2>
-				<div className="mt-12 flex w-full justify-center">
-					<Button className="rounded-full px-10  py-7 text-lg ">Umów wizytę</Button>
-				</div>
-			</div>
+		<div className="relative flex flex-col items-stretch justify-center gap-6 py-8 lg:items-end  lg:gap-10 lg:px-6 lg:py-20">
+			<h1 className=" text-center text-5xl font-medium">Kolor Sensu</h1>
+			<h2 className=" pb-4 text-center text-2xl font-medium tracking-wide">
+				Centrum Wsparcia Psychicznego
+			</h2>
+			<h2 className=" mx-auto text-center md:max-w-[60%] lg:mx-0 lg:text-right">
+				Consequuntur dicta dignissimos fuga fugit illo magni necessitatibus quia rem sit tempore.
+			</h2>
+			<Button className="self-center rounded-full  px-10  py-7 text-center text-lg">
+				Umów wizytę
+			</Button>
 		</div>
 	);
 };

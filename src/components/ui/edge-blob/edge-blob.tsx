@@ -18,8 +18,8 @@ const paths = [
 
 function getRandomValues(values: string[], count: number): string {
 	// Shuffle the array and pick 'count' number of values
-	const shuffled = values.sort(() => 0.5 - Math.random());
-	const selectedValues = shuffled.slice(0, count);
+	// const shuffled = values.sort(() => 0.5 - Math.random());
+	const selectedValues = paths.slice(0, count);
 
 	// Duplicate the first picked value at the end
 	if (selectedValues.length > 0) {
@@ -30,87 +30,77 @@ function getRandomValues(values: string[], count: number): string {
 	return selectedValues.join("; ");
 }
 
-export const Blob = () => {
+export const EdgeBlob = () => {
 	return (
-		<div className="absolute flex h-full w-screen items-center justify-center ">
-			<div className="absolute  left-0 top-0 h-fit w-[100%]">
-				<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" id="blobSvg">
-					<defs>
-						<linearGradient id="one" x1="0%" y1="0%" x2="0%" y2="100%">
-							<stop
-								offset="0%"
-								style={{ stopColor: `var(--blob-1-top)` }}
-								data-darkreader-inline-stopcolor=""
-							></stop>
-							<stop
-								offset="100%"
-								style={{ stopColor: `var(--blob-1-bot)` }}
-								data-darkreader-inline-stopcolor=""
-							></stop>
-						</linearGradient>
-					</defs>
-					<path fill="url(#one)">
-						<animate
-							attributeName="d"
-							dur="32000ms"
-							repeatCount="indefinite"
-							values={getRandomValues(paths, 8)}
-						></animate>
-					</path>
-				</svg>
-			</div>
-			<div className="absolute  left-0 top-0 h-fit w-[100%]">
-				<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" width="100%" id="blobSvg">
-					<defs>
-						<linearGradient id="two" x1="0%" y1="0%" x2="0%" y2="100%">
-							<stop
-								offset="0%"
-								style={{ stopColor: `var(--blob-2-top)` }}
-								data-darkreader-inline-stopcolor=""
-							></stop>
-							<stop
-								offset="100%"
-								style={{ stopColor: `var(--blob-2-bot)` }}
-								data-darkreader-inline-stopcolor=""
-							></stop>
-						</linearGradient>
-					</defs>
-					<path fill="url(#two)">
-						<animate
-							attributeName="d"
-							dur="32000ms"
-							repeatCount="indefinite"
-							values={getRandomValues(paths, 8)}
-						></animate>
-					</path>
-				</svg>
-			</div>
-			<div className="absolute  left-0 top-0 h-fit w-[100%]">
-				<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" width="100%" id="blobSvg">
-					<defs>
-						<linearGradient id="three" x1="0%" y1="0%" x2="0%" y2="100%">
-							<stop
-								offset="0%"
-								style={{ stopColor: `var(--blob-3-top)` }}
-								data-darkreader-inline-stopcolor=""
-							></stop>
-							<stop
-								offset="100%"
-								style={{ stopColor: `var(--blob-3-bot)` }}
-								data-darkreader-inline-stopcolor=""
-							></stop>
-						</linearGradient>
-					</defs>
-					<path fill="url(#three)">
-						<animate
-							attributeName="d"
-							dur="32000ms"
-							repeatCount="indefinite"
-							values={getRandomValues(paths, 8)}
-						></animate>
-					</path>
-				</svg>
-			</div>
+		<div className="absolute left-0 top-0 z-[-10] h-[100%] w-[100%]">
+			<svg
+				viewBox="0 0 500 500"
+				xmlns="http://www.w3.org/2000/svg"
+				id="blobSvg"
+				className="absolute  left-[0] top-[0] w-[150%] translate-x-[-50%] translate-y-[-50%] sm:translate-x-[-60%] sm:translate-y-[-70%]  lg:w-[120%] lg:translate-x-[-70%] lg:translate-y-[-70%]"
+			>
+				<defs>
+					<linearGradient id="one" x1="0%" y1="10%" x2="30%" y2="100%">
+						<stop
+							offset="0%"
+							style={{ stopColor: `var(--blob-1-center)` }}
+							data-darkreader-inline-stopcolor=""
+						></stop>
+						<stop
+							offset="50%"
+							style={{ stopColor: `var(--blob-1-center)` }}
+							data-darkreader-inline-stopcolor=""
+						></stop>
+						<stop
+							offset="100%"
+							style={{ stopColor: `var(--blob-1-bot)` }}
+							data-darkreader-inline-stopcolor=""
+						></stop>
+					</linearGradient>
+				</defs>
+				<path fill="url(#one)">
+					<animate
+						attributeName="d"
+						dur="32000ms"
+						repeatCount="indefinite"
+						values={getRandomValues(paths, 8)}
+					></animate>
+				</path>
+			</svg>
+			<svg
+				viewBox="0 0 500 500"
+				xmlns="http://www.w3.org/2000/svg"
+				id="blobSvg"
+				className="absolute bottom-[0] right-[0] w-[150%] translate-x-[60%] translate-y-[60%] sm:translate-x-[55%] sm:translate-y-[70%] lg:w-[100%] lg:translate-x-[70%] lg:translate-y-[70%]"
+			>
+				<defs>
+					<linearGradient id="two" x1="0%" y1="10%" x2="30%" y2="100%">
+						<stop
+							offset="0%"
+							style={{ stopColor: `var(--blob-1-center)` }}
+							data-darkreader-inline-stopcolor=""
+						></stop>
+						<stop
+							offset="50%"
+							style={{ stopColor: `var(--blob-1-top)` }}
+							data-darkreader-inline-stopcolor=""
+						></stop>
+						<stop
+							offset="100%"
+							style={{ stopColor: `var(--blob-1-top)` }}
+							data-darkreader-inline-stopcolor=""
+						></stop>
+					</linearGradient>
+				</defs>
+				<path fill="url(#two)">
+					<animate
+						attributeName="d"
+						dur="32000ms"
+						repeatCount="indefinite"
+						values={getRandomValues(paths, 8)}
+					></animate>
+				</path>
+			</svg>
 		</div>
 	);
 };
