@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Undo } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface FlipCardContent {
@@ -48,7 +49,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 	}, []);
 
 	return (
-		<div className=" perspective-1000 min-h-[400px] w-full min-w-[300px] max-w-[340px]">
+		<div className=" perspective-1000 min-h-[400px] w-full min-w-[300px] max-w-[340px] cursor-pointer">
 			<motion.div
 				className="flip-card-inner relative h-[100%] w-full"
 				variants={variants}
@@ -63,7 +64,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 					className="flip-card-front absolute left-0 top-0 h-[100%] w-full"
 					style={{ backfaceVisibility: "hidden" }}
 				>
-					<Card className="h-full bg-background p-6 pt-0">
+					<Card className="bent-corner relative h-full bg-background p-6 pt-0">
 						<CardHeader>
 							<CardTitle>{cardContent.header}</CardTitle>
 						</CardHeader>
@@ -71,7 +72,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 							<p>{cardContent.smallDescription}</p>
 						</CardContent>
 						<CardFooter className="absolute bottom-2 right-2 text-xs italic text-gray-500">
-							Więcej...
+							<Undo />
 						</CardFooter>
 					</Card>
 				</motion.div>
@@ -81,7 +82,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 					style={{ backfaceVisibility: "hidden" }}
 				>
 					<Card className="h-[100%] bg-accent-light text-background">
-						<CardContent className="py-6">
+						<CardContent className="p-6">
 							<p>{cardContent.reverse}</p>
 						</CardContent>
 					</Card>

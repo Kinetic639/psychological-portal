@@ -19,6 +19,30 @@
 	transform: rotateY(180deg);
 }
 
+.bent-corner::before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	border-radius: 8px 0 0  0;
+	border-width: 28px 28px 0 0;
+	border-style: solid;
+	z-index: 1;
+	border-color: var(--accent) var(--accent-lightest);
+}
+
+.bent-corner::after {
+	content: "";
+	position: absolute;
+	bottom: -3px;
+	right: -3px;
+	width: 30px;
+	height: 30px;
+	background-color: var(--accent-lightest);
+	z-index: 0;
+	border-radius: 8px 0 0  0;
+}
+
 @layer base {
 	:root {
 		--background: hsl(22.5,44.4%,92.9%);
