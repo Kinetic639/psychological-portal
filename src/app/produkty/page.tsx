@@ -1,7 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import { BackgroundWrapper } from "@/components/layout/background-wrapper";
-import { client, urlFor } from "@/lib/sanity";
+import { client } from "@/lib/sanity";
 import { type Article } from "@/lib/interface";
 
 async function getData(): Promise<Article[]> {
@@ -14,25 +13,13 @@ async function getData(): Promise<Article[]> {
 	return client.fetch(query);
 }
 
-export default async function NewPage() {
+export default async function Produkty() {
 	const data = await getData();
-
+	console.log(data);
 	return (
 		<main className="flex flex-col gap-12">
 			<BackgroundWrapper contentStyle="py-20">
-				<p>Artykuły</p>
-				{data.map((article, index) => (
-					<div key={index}>
-						<Image
-							src={urlFor(article.titleImage).url()}
-							width={300}
-							height={300}
-							alt={article.title}
-						/>
-						<div className="mb-2">{article.title}</div>
-						<div className="mb-2">{article.smallDescription}</div>
-					</div>
-				))}
+				<p>Produkty</p>
 			</BackgroundWrapper>
 		</main>
 	);

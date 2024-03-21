@@ -48,7 +48,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 	}, []);
 
 	return (
-		<div className="flip-card perspective-1000  mx-auto min-h-[400px] w-full">
+		<div className=" perspective-1000 min-h-[400px] w-full min-w-[300px] max-w-[340px]">
 			<motion.div
 				className="flip-card-inner relative h-[100%] w-full"
 				variants={variants}
@@ -63,7 +63,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 					className="flip-card-front absolute left-0 top-0 h-[100%] w-full"
 					style={{ backfaceVisibility: "hidden" }}
 				>
-					<Card className="h-full bg-background">
+					<Card className="h-full bg-background p-6 pt-0">
 						<CardHeader>
 							<CardTitle>{cardContent.header}</CardTitle>
 						</CardHeader>
