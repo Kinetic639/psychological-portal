@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Undo } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 interface FlipCardContent {
 	header: string;
@@ -14,6 +15,7 @@ interface FlipCardContent {
 export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 	const [isFlipped, setIsFlipped] = useState(false);
 	const flipBackTimeout = React.useRef<NodeJS.Timeout | null>(null);
+	const isDesktop = useMediaQuery("(min-width: 768px)");
 
 	const variants = {
 		front: {
@@ -24,6 +26,10 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 			rotateY: 180,
 			zIndex: 0,
 		},
+	};
+
+	const handleToggleFlip = () => {
+		setIsFlipped(!isFlipped);
 	};
 
 	const handleEnter = () => {
@@ -37,7 +43,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 	const handleLeave = () => {
 		flipBackTimeout.current = setTimeout(() => {
 			setIsFlipped(false);
-		}, 150); // Adjust delay as needed
+		}, 150);
 	};
 
 	useEffect(() => {
@@ -57,6 +63,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 				animate={isFlipped ? "back" : "front"}
 				transition={{ duration: 0.3, ease: "easeInOut" }}
 				style={{ transformStyle: "preserve-3d" }}
+				onClick={!isDesktop ? handleToggleFlip : undefined}
 				onMouseEnter={handleEnter}
 				onMouseLeave={handleLeave}
 			>
