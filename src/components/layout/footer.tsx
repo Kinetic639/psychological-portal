@@ -27,7 +27,7 @@ function Footer() {
 					</li>
 				</ul>
 
-				<div className="min-w-[200px] flex-1 ">
+				<div className="min-w-[220px] flex-1 ">
 					<p className="font-semibold">Kontakt</p>
 					<p>Tel: 533-026-599</p>
 					<p>Email: kolorsensu@gmail.com</p>
