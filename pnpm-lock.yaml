@@ -35,6 +35,9 @@ dependencies:
   '@tailwindcss/line-clamp':
     specifier: ^0.4.4
     version: 0.4.4(tailwindcss@3.4.1)
+  blobshape:
+    specifier: ^1.0.0
+    version: 1.0.0
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -76,6 +79,9 @@ dependencies:
     version: 0.9.0(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
+  '@types/blobshape':
+    specifier: ^1.0.3
+    version: 1.0.3
   '@types/node':
     specifier: ^20
     version: 20.11.25
@@ -2236,6 +2242,10 @@ packages:
       '@babel/types': 7.24.0
     dev: false
 
+  /@types/blobshape@1.0.3:
+    resolution: {integrity: sha512-jbJZ9AIebK77LoeN8PjPyAs88GJCDKO+ZpWCJlLlV2FXkeYScQsvkZmlGHGvSRk/WFmUOdbGJ75umLATGX1lsw==}
+    dev: true
+
   /@types/event-source-polyfill@1.0.2:
     resolution: {integrity: sha512-qE5zrFd73BRs5oSjVys6g/5GboqOMbzLRTUFPAhfULvvvbRAOXw9m4Wk+p1BtoZm4JgW7TljGGfVabBqvi3eig==}
     dev: false
@@ -2920,6 +2930,10 @@ packages:
       buffer: 5.7.1
       inherits: 2.0.4
       readable-stream: 3.6.2
+    dev: false
+
+  /blobshape@1.0.0:
+    resolution: {integrity: sha512-GUD6tUIvj7k8zLSMtfdM1RyusWDjFqYL9g6J6QIgwxbVjL3b6mbRz5peerDc+6kbZX/14BSr3ed9sizrJKdkQQ==}
     dev: false
 
   /brace-expansion@1.1.11:

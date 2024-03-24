@@ -3,15 +3,19 @@
 import React, { useState, useEffect } from "react";
 
 import Image from "next/image";
+import { ChevronsRight } from "lucide-react";
 import { type Article } from "@/lib/interface";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
 	type CarouselApi,
+	CarouselPrevious,
+	CarouselNext,
 } from "@/components/ui/carousel";
 import { client, urlFor } from "@/lib/sanity";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 async function getLatestArticles() {
 	const query = `*[_type == 'Article'] | order(_createdAt desc) {
@@ -26,7 +30,7 @@ async function getLatestArticles() {
 export function CarouselDApiDemo() {
 	const [api, setApi] = useState<CarouselApi>();
 	const [current, setCurrent] = useState(0);
-	const [articles, setArticles] = useState<Article[]>([]); // State for storing articles
+	const [articles, setArticles] = useState<Article[]>([]);
 
 	useEffect(() => {
 		getLatestArticles().then(setArticles).catch(console.error);
@@ -51,33 +55,49 @@ export function CarouselDApiDemo() {
 		api?.scrollTo(index);
 	};
 
+	const isDesktop = useMediaQuery("(min-width: 768px)");
+	if (isDesktop === undefined) {
+		return null;
+	}
+
 	return (
-		<Carousel setApi={setApi} className="mx-auto w-full max-w-[800px]">
+		<Carousel
+			setApi={setApi}
+			className="mx-auto flex w-full max-w-[360px] flex-col gap-4 md:max-w-[800px]"
+		>
 			<CarouselContent>
 				{articles.map((article, index) => (
 					<CarouselItem key={index}>
-						<Card className="p-0">
-							<CardContent className="flex flex-1 flex-col justify-start gap-2 sm:flex-row ">
-								<div className="blob-wrapper">
-									<Image
-										src={urlFor(article.titleImage).url()}
-										width={300}
-										height={300}
-										alt={article.title}
-										layout="responsive"
-										className="mx-auto max-w-[300px] border"
-									/>
-								</div>
-								<div className="flex h-[250px]  flex-col gap-2 p-4">
-									<span className="overflow-hidden text-xl font-semibold">{article.title}</span>
-									<p className="line-clamp-4">{article.smallDescription} </p>
+						<Card className="h-full bg-background p-4 md:p-6">
+							<CardContent className="flex h-full flex-1 flex-col  gap-4 sm:flex-row md:gap-6">
+								<Image
+									src={urlFor(article.titleImage).url()}
+									width={300}
+									height={300}
+									alt={article.title}
+									className="mx-auto w-full max-w-[320px] rounded-lg"
+								/>
+								<div className="flex min-h-10 flex-1 flex-col gap-3">
+									<div className="flex h-[220px] flex-1  flex-col gap-4 ">
+										<span className="overflow-hidden text-xl font-semibold">{article.title}</span>
+										<p className="line-clamp-4 text-sm">{article.smallDescription} </p>
+									</div>
+									<button className="flex gap-2 self-end px-4 hover:text-accent-dark">
+										czytaj dalej... <ChevronsRight />
+									</button>
 								</div>
 							</CardContent>
-							<CardFooter className="flex items-center justify-end ">czytaj dalej...</CardFooter>
 						</Card>
 					</CarouselItem>
 				))}
 			</CarouselContent>
+
+			{isDesktop && (
+				<>
+					<CarouselPrevious className="border-none" />
+					<CarouselNext className="border-none" />
+				</>
+			)}
 			<div className="flex justify-center space-x-2 py-2">
 				{articles.map((_, index) => (
 					<button

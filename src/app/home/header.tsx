@@ -9,9 +9,9 @@ const Header = () => {
 				Centrum Wsparcia Psychicznego
 			</h2>
 			<h2 className=" mx-auto text-center md:max-w-[60%] lg:mx-0 lg:text-right">
-				Consequuntur dicta dignissimos fuga fugit illo magni necessitatibus quia rem sit tempore.
+				Zapraszamy Cię do podjęcia podróży w kierunku lepszego zdrowia psychicznego
 			</h2>
-			<Button className="self-center rounded-full  px-10  py-7 text-center text-lg">
+			<Button className="mt-2 self-center rounded-full  px-10  py-7 text-center text-lg">
 				Umów wizytę
 			</Button>
 		</div>

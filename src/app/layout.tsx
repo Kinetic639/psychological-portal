@@ -3,8 +3,8 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-import { ModeToggle } from "@/components/ui/theme-toggle";
 import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -30,20 +30,7 @@ export default function RootLayout({
 				>
 					<Navbar />
 					<section className="flex flex-col">{children}</section>
-					<footer className="mx-auto mt-[100px] px-6 pb-6 text-center text-sm text-primary">
-						<div className="flex w-full items-center justify-between gap-4 text-left text-primary">
-							<div className="mx-auto flex flex-wrap gap-8  p-3 text-left text-primary">
-								<ul>
-									<li>Materiały</li>
-									<li>Cennik</li>
-									<li>Umów wizytę</li>
-								</ul>
-							</div>
-							<div className="flex-1"></div>
-							<ModeToggle />
-						</div>
-						<p>© Anna Maria Kłobuchowska 2024</p>
-					</footer>
+					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>

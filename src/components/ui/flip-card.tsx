@@ -2,17 +2,22 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Undo } from "lucide-react";
+import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 interface FlipCardContent {
 	header: string;
 	smallDescription: string;
 	reverse: string;
+	icon: string;
 }
 
 export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 	const [isFlipped, setIsFlipped] = useState(false);
 	const flipBackTimeout = React.useRef<NodeJS.Timeout | null>(null);
+	const isDesktop = useMediaQuery("(min-width: 768px)");
 
 	const variants = {
 		front: {
@@ -23,6 +28,10 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 			rotateY: 180,
 			zIndex: 0,
 		},
+	};
+
+	const handleToggleFlip = () => {
+		setIsFlipped(!isFlipped);
 	};
 
 	const handleEnter = () => {
@@ -36,7 +45,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 	const handleLeave = () => {
 		flipBackTimeout.current = setTimeout(() => {
 			setIsFlipped(false);
-		}, 150); // Adjust delay as needed
+		}, 150);
 	};
 
 	useEffect(() => {
@@ -48,7 +57,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 	}, []);
 
 	return (
-		<div className=" perspective-1000 min-h-[400px] w-full min-w-[300px] max-w-[340px]">
+		<div className=" perspective-1000 min-h-[450px] w-full min-w-[300px] max-w-[340px] cursor-pointer">
 			<motion.div
 				className="flip-card-inner relative h-[100%] w-full"
 				variants={variants}
@@ -56,6 +65,7 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 				animate={isFlipped ? "back" : "front"}
 				transition={{ duration: 0.3, ease: "easeInOut" }}
 				style={{ transformStyle: "preserve-3d" }}
+				onClick={!isDesktop ? handleToggleFlip : undefined}
 				onMouseEnter={handleEnter}
 				onMouseLeave={handleLeave}
 			>
@@ -63,15 +73,22 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 					className="flip-card-front absolute left-0 top-0 h-[100%] w-full"
 					style={{ backfaceVisibility: "hidden" }}
 				>
-					<Card className="h-full bg-background p-6 pt-0">
+					<Card className="bent-corner relative h-full bg-background px-6 py-8">
+						<Image
+							src={`assets/images/card-${cardContent.icon}.svg`}
+							alt={`Ikona ${cardContent.header}`}
+							height={140}
+							width={140}
+							className="mx-auto"
+						/>
 						<CardHeader>
-							<CardTitle>{cardContent.header}</CardTitle>
+							<CardTitle className="leading-2">{cardContent.header}</CardTitle>
 						</CardHeader>
 						<CardContent>
 							<p>{cardContent.smallDescription}</p>
 						</CardContent>
 						<CardFooter className="absolute bottom-2 right-2 text-xs italic text-gray-500">
-							Więcej...
+							<Undo />
 						</CardFooter>
 					</Card>
 				</motion.div>
@@ -80,8 +97,8 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 					className="flip-card-back rotate-y-180 absolute left-0 top-0 h-[100%] w-full"
 					style={{ backfaceVisibility: "hidden" }}
 				>
-					<Card className="h-[100%] bg-accent-light text-background">
-						<CardContent className="py-6">
+					<Card className="h-[100%] bg-primary text-background">
+						<CardContent className="p-10 text-center">
 							<p>{cardContent.reverse}</p>
 						</CardContent>
 					</Card>
