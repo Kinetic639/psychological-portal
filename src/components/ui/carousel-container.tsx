@@ -3,16 +3,19 @@
 import React, { useState, useEffect } from "react";
 
 import Image from "next/image";
+import { ChevronsRight } from "lucide-react";
 import { type Article } from "@/lib/interface";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
 	type CarouselApi,
+	CarouselPrevious,
+	CarouselNext,
 } from "@/components/ui/carousel";
 import { client, urlFor } from "@/lib/sanity";
-import { ChevronsRight } from "lucide-react";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 async function getLatestArticles() {
 	const query = `*[_type == 'Article'] | order(_createdAt desc) {
@@ -27,7 +30,7 @@ async function getLatestArticles() {
 export function CarouselDApiDemo() {
 	const [api, setApi] = useState<CarouselApi>();
 	const [current, setCurrent] = useState(0);
-	const [articles, setArticles] = useState<Article[]>([]); // State for storing articles
+	const [articles, setArticles] = useState<Article[]>([]);
 
 	useEffect(() => {
 		getLatestArticles().then(setArticles).catch(console.error);
@@ -51,6 +54,11 @@ export function CarouselDApiDemo() {
 	const goToSlide = (index: number) => {
 		api?.scrollTo(index);
 	};
+
+	const isDesktop = useMediaQuery("(min-width: 768px)");
+	if (isDesktop === undefined) {
+		return null;
+	}
 
 	return (
 		<Carousel
@@ -83,6 +91,13 @@ export function CarouselDApiDemo() {
 					</CarouselItem>
 				))}
 			</CarouselContent>
+
+			{isDesktop && (
+				<>
+					<CarouselPrevious className="border-none" />
+					<CarouselNext className="border-none" />
+				</>
+			)}
 			<div className="flex justify-center space-x-2 py-2">
 				{articles.map((_, index) => (
 					<button

@@ -14,7 +14,7 @@ export function HomeFaqSection() {
 					</Button>
 				</Link>
 			</div>
-			<ImageBlobFrame alt="test" src="https://picsum.photos/800/800" />
+			<ImageBlobFrame src="https://picsum.photos/800/800" />
 		</div>
 	);
 }
