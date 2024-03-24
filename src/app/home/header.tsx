@@ -11,7 +11,7 @@ const Header = () => {
 			<h2 className=" mx-auto text-center md:max-w-[60%] lg:mx-0 lg:text-right">
 				Zapraszamy Cię do podjęcia podróży w kierunku lepszego zdrowia psychicznego
 			</h2>
-			<Button className="self-center rounded-full  px-10  py-7 text-center text-lg">
+			<Button className="mt-2 self-center rounded-full  px-10  py-7 text-center text-lg">
 				Umów wizytę
 			</Button>
 		</div>

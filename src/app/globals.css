@@ -18,6 +18,7 @@
 .flip-card-back {
 	transform: rotateY(180deg);
 }
+
 .bent-corner {
 	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%);
 
@@ -33,12 +34,6 @@
 	border-style: solid;
 	z-index: 1;
 	border-color: var(--primary) var(--accent-lightest);
-}
-
-.image-blob-frame {
-	width: 100%;
-	height: auto;
-	aspect-ratio: 1 / 1;
 }
 
 @layer base {
