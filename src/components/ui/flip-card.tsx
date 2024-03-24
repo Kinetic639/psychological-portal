@@ -73,12 +73,12 @@ export const FlipCard = ({ cardContent }: { cardContent: FlipCardContent }) => {
 					className="flip-card-front absolute left-0 top-0 h-[100%] w-full"
 					style={{ backfaceVisibility: "hidden" }}
 				>
-					<Card className="bent-corner relative h-full bg-background p-6">
+					<Card className="bent-corner relative h-full bg-background px-6 py-8">
 						<Image
 							src={`assets/images/card-${cardContent.icon}.svg`}
 							alt={`Ikona ${cardContent.header}`}
-							height={130}
-							width={130}
+							height={140}
+							width={140}
 							className="mx-auto"
 						/>
 						<CardHeader>
