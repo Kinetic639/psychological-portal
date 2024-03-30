@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 
 import Image from "next/image";
 import { ChevronsRight } from "lucide-react";
-import { type Article } from "@/lib/interface";
 import { Card, CardContent } from "@/components/ui/card";
 import {
 	Carousel,
@@ -16,6 +15,7 @@ import {
 } from "@/components/ui/carousel";
 import { client, urlFor } from "@/lib/sanity";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { type Article } from "@/app/news/types";
 
 async function getLatestArticles() {
 	const query = `*[_type == 'Article'] | order(_createdAt desc) {

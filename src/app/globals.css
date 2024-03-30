@@ -118,6 +118,10 @@
 		--ring: hsl(344.4, 26.2%, 80%);
 	}
 }
+html, body{
+	height: 100%
+
+}
 
 @layer base {
 	* {

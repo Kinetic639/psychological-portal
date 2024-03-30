@@ -1,10 +1,10 @@
 import React from "react";
 import { BackgroundWrapper } from "@/components/layout/background-wrapper";
 import { client } from "@/lib/sanity";
-import { type Article } from "@/lib/interface";
 import { mockedServices } from "@/app/uslugi/mocked-services";
 import { type Service } from "@/app/uslugi/types";
 import ServiceCard from "@/app/uslugi/components/service-card";
+import { type Article } from "@/app/news/types";
 
 async function getData(): Promise<Article[]> {
 	const query = `*[_type == 'Article'] | order(_createdAt desc) {

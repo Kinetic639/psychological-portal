@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { BackgroundWrapper } from "@/components/layout/background-wrapper";
 import { client } from "@/lib/sanity";
-import { type Article } from "@/lib/interface";
+import { type Article } from "@/app/news/types";
 
 async function getData() {
 	const query = `*[_type == 'Article'] | order(_createdAt desc) {
