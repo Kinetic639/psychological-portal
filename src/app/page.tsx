@@ -33,7 +33,7 @@ export default async function Home() {
 			>
 				<p className="text-center text-3xl font-medium">Najnowsze artykuły</p>
 				<CarouselDApiDemo />
-				<Link href="articles" className="flex w-full justify-center">
+				<Link href="artykuly" className="flex w-full justify-center">
 					<Button className="mx-auto max-w-4xl rounded-full px-12 py-6">Więcej artykułów</Button>
 				</Link>
 			</BackgroundWrapper>
