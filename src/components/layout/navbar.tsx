@@ -11,9 +11,11 @@ import { MobileMenu } from "@/components/ui/mobile-menu";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
 	const isScrolled = usePageScrolled();
 
-	const isDesktop = useMediaQuery("(min-width: 768px)");
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
+	const isDesktop: boolean | undefined = useMediaQuery("(min-width: 768px)");
 	if (isDesktop === undefined) {
 		return null;
 	}

@@ -81,6 +81,17 @@
 			}
 		]
 	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		},
+		"import/resolver": {
+			"typescript": {},
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
+	},
 	"overrides": [
 		{
 			"files": ["src/app/**/*.ts?(x)", "middleware.ts"],
