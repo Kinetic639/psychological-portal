@@ -13,9 +13,9 @@ import {
 	CarouselPrevious,
 	CarouselNext,
 } from "@/components/ui/carousel";
-import { client, urlFor } from "@/lib/sanity";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { type Article } from "@/app/news/types";
+import { type Article } from "@/app/(portal)/news/types";
+import { client } from "@/sanity/lib/client";
 
 async function getLatestArticles() {
 	const query = `*[_type == 'Article'] | order(_createdAt desc) {
@@ -71,7 +71,7 @@ export function CarouselDApiDemo() {
 						<Card className="h-full bg-background p-4 md:p-6">
 							<CardContent className="flex h-full flex-1 flex-col  gap-4 sm:flex-row md:gap-6">
 								<Image
-									src={urlFor(article.titleImage).url()}
+									src={"urlFor(article.titleImage).url()"}
 									width={300}
 									height={300}
 									alt={article.title}
