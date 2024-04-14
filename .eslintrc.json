@@ -20,7 +20,7 @@
 		"import/no-mutable-exports": "error",
 
 		"import/no-cycle": "error",
-		"import/no-default-export": "error",
+//		"import/no-default-export": "error",
 
 		// allow {} even though it's unsafe but comes handy
 		"@typescript-eslint/ban-types": [
@@ -81,9 +81,20 @@
 			}
 		]
 	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		},
+		"import/resolver": {
+			"typescript": {},
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
+	},
 	"overrides": [
 		{
-			"files": ["src/app/**/*.ts?(x)", "middleware.ts"],
+			"files": ["sanity/**/*.ts?(x)","src/app/**/*.ts?(x)", "middleware.ts"],
 			"rules": {
 				"import/no-default-export": "off"
 			}

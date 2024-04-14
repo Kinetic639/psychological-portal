@@ -7,7 +7,10 @@ const nextConfig = {
             {protocol: 'https', hostname: 'picsum.photos', port: ''
             }
         ]
-    }
+    },
+    experimental: {
+        taint: true,
+    },
 };
 
 export default nextConfig;

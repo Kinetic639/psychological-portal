@@ -20,7 +20,7 @@ export function MobileMenu() {
 	const isScrolled = usePageScrolled();
 	const currentPath = usePathname();
 	const staticClassnames =
-		"min-w-[240px] text-sm py-5 rounded-0 flex w-max font-medium capitalize transition-colors border-b-gray-300 border-b hover:text-accent";
+		"min-w-[240px] text-sm rounded-0 flex w-max font-medium capitalize transition-colors border-b-gray-300 border-b hover:text-accent";
 
 	return (
 		<Drawer direction="right">
@@ -31,10 +31,13 @@ export function MobileMenu() {
 				<p className="text-[16px] uppercase">menu</p>
 				<Menu size={28} />
 			</DrawerTrigger>
-			<DrawerContent className="max-w-[290px] border-none bg-background p-6">
-				<DrawerHeader className="flex items-center justify-between p-0">
-					<Logo />
-					<DrawerTrigger className="flex items-center gap-2" style={{ zIndex: 2 }}>
+			<DrawerContent className="w-full max-w-[290px] items-stretch border-none bg-background p-6">
+				<DrawerHeader className="flex w-full items-center justify-between p-0">
+					<DrawerTrigger
+						className="flex w-full items-center justify-between gap-2"
+						style={{ zIndex: 2 }}
+					>
+						<Logo />
 						<ChevronRight size={28} />
 					</DrawerTrigger>
 				</DrawerHeader>
@@ -51,7 +54,12 @@ export function MobileMenu() {
 												(isScrolled ? "text-accent-lightest" : "border-b-accent text-accent"),
 										)}
 									>
-										{page.title}
+										<DrawerTrigger
+											className="flex h-full min-h-12 w-full items-center gap-2 py-5 "
+											style={{ zIndex: 2 }}
+										>
+											{page.title}
+										</DrawerTrigger>
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
