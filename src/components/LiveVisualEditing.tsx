@@ -1,5 +1,3 @@
-// ./components/LiveVisualEditing.tsx
-
 "use client";
 
 import { useLiveMode } from "@sanity/react-loader";

@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { BackgroundWrapper } from "@/components/layout/background-wrapper";
 import { type Article } from "@/app/(portal)/news/types";
 import { client } from "@/sanity/lib/client";
+import { Button } from "@/components/ui/button";
 
 async function getData() {
 	const query = `*[_type == 'Article'] | order(_createdAt desc) {
@@ -57,6 +59,9 @@ export default async function Specjalisci() {
 								<p>Pomogę Cię w:</p>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, nobis!</p>
 							</div>
+							<Link href="/umow-wizyte" className="flex flex-1 items-center justify-end">
+								<Button className="mr-3 rounded-3xl px-6 text-sm">Umów wizytę</Button>
+							</Link>
 						</div>
 					</div>
 					<div className="mx-auto flex flex-col justify-center gap-8 px-4 md:flex-row">
@@ -84,6 +89,9 @@ export default async function Specjalisci() {
 								<p>Pomogę Cię w:</p>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, nobis!</p>
 							</div>
+							<Link href="/umow-wizyte" className="flex flex-1 items-center justify-start">
+								<Button className="mr-3 rounded-3xl px-6 text-sm">Umów wizytę</Button>
+							</Link>
 						</div>
 					</div>
 				</div>

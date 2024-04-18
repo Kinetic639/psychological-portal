@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { DesktopMenu } from "@/components/ui/desktop-menu";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
@@ -51,7 +52,9 @@ export const Navbar = () => {
 			{isDesktop ? (
 				<>
 					<DesktopMenu />
-					<Button className="mr-3 rounded-3xl px-6 text-sm">Umów wizytę</Button>
+					<Link href="/umow-wizyte">
+						<Button className="mr-3 rounded-3xl px-6 text-sm">Umów wizytę</Button>
+					</Link>
 				</>
 			) : (
 				<MobileMenu />
