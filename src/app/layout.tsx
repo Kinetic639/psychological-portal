@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 // import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import LiveVisualEditing from "@/components/LiveVisualEditing";
-
+import { Navbar } from "@/components/layout/navbar";
 const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
 	description: "Centrum wsparcia psychicznego online",
 };
 
-// export { metadata, viewport } from "next-sanity/studio";
-
 export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const { isEnabled } = draftMode();
+	console.log(isEnabled);
 	return (
 		<html lang="en">
 			<body className={`${inter.className} relative`}>
@@ -32,11 +32,10 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					{/*<Navbar />*/}
-					<section className="flex flex-col">
-						{children}
-						{draftMode().isEnabled && <LiveVisualEditing />}
-					</section>
+					{draftMode().isEnabled && <LiveVisualEditing />}
+
+					{!draftMode().isEnabled && <Navbar />}
+					<section className=" flex flex-col">{children}</section>
 					<Footer />
 				</ThemeProvider>
 			</body>
